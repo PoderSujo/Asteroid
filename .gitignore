@@ -1,2 +1,13 @@
 venv/
-__pycache__/
+.venv/
+env/
+*.pyc
+**/__pycache__/
+
+# Ignorar o lixo do Pygbag (mas manter a pasta web que o GitHub Pages precisa)
+build/web-cache/
+build/version.txt
+
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db

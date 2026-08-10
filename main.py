@@ -1,5 +1,7 @@
+
 import pygame
 import sys
+import asyncio
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField 
@@ -7,7 +9,7 @@ from shot import Shot
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, ASTEROID_MIN_RADIUS, ASTEROID_KINDS, ASTEROID_SPAWN_RATE, ASTEROID_MAX_RADIUS, PLAYER_RADIUS
 
 
-def main():
+async def main():
     pygame.init()    
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
@@ -72,6 +74,8 @@ def main():
         # limit the framerate to 60 FPS
         
         dt = clock.tick(60) / 1000
+
+        await asyncio.sleep(0)
         
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
@@ -88,5 +92,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
 
