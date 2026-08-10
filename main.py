@@ -43,6 +43,8 @@ async def main():
 
  
     while True:
+
+        await asyncio.sleep(0)
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -60,7 +62,25 @@ async def main():
         for asteroid in asteroids:
             if asteroid.collide(player):
                 print("Game over!")
-                sys.exit()
+                #sys.exit()
+
+                pygame.display.flip()
+
+                await asyncio.sleep(3)
+
+
+                # 1. Apaga todos os objetos antigos da tela
+                asteroids.empty()
+                updatable.empty()
+                drawable.empty()
+                shots.empty()
+                
+                # 2. Cria tudo do zero novamente nos lugares iniciais
+                asteroid_field = AsteroidField()
+                player = Player(x, y)
+                dt = 0
+
+                break
             for shot in shots:
                 if asteroid.collide(shot):
                     asteroid.split()
